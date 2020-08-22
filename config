@@ -1,3 +1,16 @@
+###### DOUG BEGIN CUSTOM #################
+
+# Gaps
+gaps inner 20
+# No gaps for single window
+smart_gaps on
+# Remove Window title
+new_window 1pixel
+# Remove the borders for single window
+hide_edge_borders smart
+
+# exec --no-startup-id compton -b
+
 # mod
 set $mod Mod4
 
@@ -5,8 +18,9 @@ set $mod Mod4
 font pango: San Francisco Display 10
 
 # thin borders
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
+####### DOUG END CUSTOM ###################
 
 # drag windows
 floating_modifier $mod
@@ -18,7 +32,7 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # lock
-bindsym $mod+Shift+x exec i3lock --color 475263
+# bindsym $mod+Shift+x exec i3lock --color 475263
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -49,16 +63,16 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -113,11 +127,6 @@ mode "resize" {
 # resize mode
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
@@ -147,7 +156,7 @@ bar {
 
 # key-bindings
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Shift+g exec google-chrome
+bindsym $mod+Shift+s exec emacs
 bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
@@ -156,6 +165,11 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opaci
 # startup
 exec_always --no-startup-id feh --bg-scale /home/doug/Downloads/wallpaper.jpg
 exec_always --no-startup-id xrandr --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DVI-I-3 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-2 --mode 1920x1080 --pos 1920x0 --rotate normal
-# exec --no-startup-id spotify
-# exec --no-startup-id skype
 
+
+### Custom ###
+set $inactive-bg-color   #0F111A
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #F78C6C
+set $bg-color 	         #2f343f
