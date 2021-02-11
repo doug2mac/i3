@@ -1,0 +1,28 @@
+general {
+	colors = true
+
+	color_good = "#D3E3F4"
+	color_bad = "#F82512"
+	color_degraded = "#827972"
+    color_separator = "#FDDAC6"
+
+	interval = 5
+}
+
+order += "battery all"
+order += "tztime local"
+
+tztime local {
+    min_width = 30
+    format = "%b %d   %R 24hr  "
+}
+
+battery all {
+    min_width = 30
+	format = "☈ %percentage"
+    integer_battery_capacity = true
+    hide_seconds = true
+    threshold_type = percentage
+    low_threshold = 30
+    format_down = ""
+}
