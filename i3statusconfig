@@ -1,28 +1,60 @@
 general {
-	colors = true
-
-	color_good = "#D3E3F4"
-	color_bad = "#F82512"
-	color_degraded = "#827972"
-    color_separator = "#FDDAC6"
-
-	interval = 5
+  colors = true
+  interval = 1
+  colors = true
+  color_good = "#36E592"
+  color_degraded = "#CE9726"
+  color_bad = "#CE4B4F"
+  color_separator = "#B3BEFF"
+  interval = 5
 }
 
-order += "battery all"
-order += "tztime local"
+order += "memory"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "disk /"
+order += "battery 0"
+order += "volume master"
+order += "time"
 
-tztime local {
+battery 0 {
     min_width = 30
-    format = "%b %d   %R 24hr  "
-}
-
-battery all {
-    min_width = 30
-	format = "☈ %percentage"
+        format = "☈ %percentage"
     integer_battery_capacity = true
     hide_seconds = true
     threshold_type = percentage
     low_threshold = 30
     format_down = ""
 }
+
+time {
+  format = " %a, %d %b %H:%M"
+}
+
+memory {
+    format= " Free RAM: %available "
+    threshold_degraded = "300M"
+    format_degraded = " Free RAM: %available "
+}
+
+cpu_usage {
+  format = " %usage"
+}
+
+cpu_temperature 0 {
+  format = "%degrees °C"
+  max_threshold = "65"
+}
+
+disk "/" {
+  format = "  %free %avail"
+}
+
+volume master {
+  format = " %volume"
+  format_muted = " %volume"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
+
